@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام در پولی کو</title>
+    <link rel="stylesheet" href="/css/signupStyle.css">
+</head>
+<body>
+
+    <section class="section-a">
+        <div class="container">
+            <div class="circular">
+                <img src="/assets/img/PolikooLogin.png" class="polikoo" alt="PolikooLogo">
+                <h4>پولی کو</h4>
+                <h5>عضویت</h5>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-b">
+        <div class="container">
+            <h4><%= msg %></h4>
+            <form action="register_process" method="POST" class="nestedForm">
+                <div class="username" style="margin-bottom: 30px;">
+                    <input placeholder="نام کامل" type="text" class="usr" name="fullname">
+                    <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
+                </div>
+
+                <div class="username">
+                    <input placeholder="نام کاربری" type="text" class="usr" name="username">
+                    <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
+                </div>
+
+                <div class="password" style="margin-bottom: 30px;">
+                    <input placeholder="گذرواژه" type="password" class="pass" name="password">
+                    <img src="/assets/img/password.png" class="usrIcon" alt="passwordIcon">
+                </div>
+
+                <div class="username">
+                    <input placeholder="کد ملی" type="text" class="usr" name="ntCode">
+                    <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
+                </div>
+
+                <div class="form">
+                    <button class="loginSecond">ثبت نام</button>
+                    <a href="login" class="loginLink">حساب خود را در پولی کو وارد کنید</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

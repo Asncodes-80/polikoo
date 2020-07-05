@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قرعه کشی پولی کو</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link rel="stylesheet" href="/css/gMode.css">
+</head>
+<body>
+    <% results.forEach((item)=>{%>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="container">
+                <form action="/logout" method="post">
+                    <button class="logout"  >خروج</button>
+                </form>
+                    <div class="prof">
+                        <img src="/assets/img/PolikooLogo.png" class="logo" alt="PolikooLogo">
+                        <div class="proDetail">
+                            <p><%= item.username%></p>
+                            <p class="ipShow" id="userIP"><%= item.ipaddress %></p>
+                        </div>
+                    </div>
+            </div>
+        </nav>
+        <% if(adResults != "") {%>
+            <% adResults.forEach((adItem)=>{%> 
+                <% results.forEach((item)=>{%>  
+                <section class="section-a">
+                    <div class="container">
+                        <h2>:عدد تصادفی شما</h2>
+                        <h3 class="ipRand" id="ipRand"><%= adItem.random %></h3>
+                        <h4>:جمع ارقام آی پی شما </h4>
+                        <h1 id="sumIP"></h1>
+                        <h1 id="result"></h1>
+                        <a href="/submit_process" class="submitWinner">...اینجا را برای ثبت شدن کلیک کنید</a>
+                    </div>
+                </section>
+            <%})%>
+                <%})%>
+        <%} else {%>
+            <section class="section-a">
+                <div class="container">
+                    <h1>خطای دیتابیس</h1>
+                </div>
+            </section>
+        <%}%>
+
+        <!-- <section class="section-b">
+            <div class="container">
+                <div class="loginUsers">
+                    <div class="updateUserIncoming">بروزرسانی</div>
+                    <div class="users">
+                        <p>Alireza.codes</p>
+                        <p>26</p>
+                    </div>
+                    <div class="users">
+                        <p>Donya.er</p>
+                        <p>46</p>
+                    </div>
+                    <div class="users">
+                        <p>bbrt</p>
+                        <p>20</p>
+                    </div>
+                    <div class="users">
+                        <p>tony</p>
+                        <p>58</p>
+                    </div>
+                    <div class="users">
+                        <p>Robert</p>
+                        <p>59</p>
+                    </div>
+                    <div class="users">
+                        <p>Alireza.codes</p>
+                        <p>26</p>
+                    </div>
+                    <div class="users">
+                        <p>Donya.er</p>
+                        <p>46</p>
+                    </div>
+                    <div class="users">
+                        <p>bbrt</p>
+                        <p>20</p>
+                    </div>
+                    <div class="users">
+                        <p>tony</p>
+                        <p>58</p>
+                    </div>
+                    <div class="users">
+                        <p>Robert</p>
+                        <p>59</p>
+                    </div>
+                </div>
+                <div class="winner">
+                    <div class="updateWinnerIncoming">بروزرسانی برندکان</div>
+                    <div class="users">
+                        <p>Alireza.codes</p>
+                        <p>26</p>
+                    </div>
+                    <div class="users">
+                        <p>Alireza.codes</p>
+                        <p>26</p>
+                    </div>
+                    <div class="users">
+                        <p>Alireza.codes</p>
+                        <p>26</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <script>
+            var userIp = document.getElementById('userIP').innerHTML; 
+            var ipRand = document.getElementById('ipRand').innerHTML;
+            var sumi = 0;// 0 
+            var i = 0;
+            for(i; i< userIp.length; i++){
+                if(userIp[i]!='.'){
+                    sumi = sumi + parseInt(userIp[i]);
+                    i++;
+                 }else{
+                    i++;
+                 }
+            }
+            document.getElementById("sumIP").innerHTML = sumi;
+            $('#sumIP').each(function () {
+                $(this).prop('Counter',0).animate({
+                   Counter: $(this).text(),
+                }, {
+                   duration: 8000,
+                   easing: 'swing',
+                   step: function (now) {
+                       $(this).text(Math.ceil(now));
+                   }
+                })
+             }); 
+
+            var result = document.getElementById("result");
+            // Runnig equiment function to wonnder or looser
+			 $(document).ready(function(){
+				setTimeout(function(){
+				    if(sumi == ipRand){
+                        document.getElementById("result").innerHTML = 'شما برنده شده اید برروی لینک زیر کلیک کنید تا تایید شوید';
+                        document.getElementById("result").style.color = "#d3d312"
+                    }else{
+                        document.getElementById("result").innerHTML = 'شما در این دست پذیرفته نشده اید';
+                        document.getElementById("result").style.color = "red"
+                    }       
+				}, 8000);
+             })
+             
+            
+        </script>
+
+        <script>
+            $('.ipRand').each(function () {
+                $(this).prop('Counter',0).animate({
+                   Counter: $(this).text(),
+                }, {
+                   duration: 5000,
+                   easing: 'swing',
+                   step: function (now) {
+                       $(this).text(Math.ceil(now));
+                   }
+                })
+             }); 
+        </script>
+    <%})%>
+</body>
+</html>

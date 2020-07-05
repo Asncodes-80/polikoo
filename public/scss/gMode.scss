@@ -1,0 +1,184 @@
+$primary-color: #FFD928;
+$font-color-forward:#9F9F9F;
+$btn-font-size: 20px;
+@mixin setDisplayRow {
+    display: flex;
+    flex-direction: row;
+}
+@mixin setSection-aRow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+@mixin mainDisplayCol {
+    display: flex;
+    flex-direction: column;
+}
+@mixin setDisplayCol {
+    display: flex;
+    flex-direction: column-reverse;
+}
+@font-face{
+    font-family: vazir;
+    src: url('../assets/font/Vazir.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: vazir;
+}
+body{
+    @include mainDisplayCol();
+    background: rgb(255, 255, 255);
+// background: linear-gradient(90deg, rgb(211, 211, 211) 0%, rgb(255, 255, 255) 100%);
+}
+a{
+    text-decoration: none;
+}
+.navbar .container .logo{
+    width: 60px;
+}
+.navbar .container{
+    @include setDisplayRow();
+    justify-content: space-between;
+    align-self: center;
+    align-items: center;
+    margin: 40px 80px;
+}
+
+.navbar .container .prof{
+    @include setSection-aRow();
+    align-items: center;
+}
+.navbar .container .prof .proDetail{
+    @include mainDisplayCol();
+    margin-right: 20px;
+}
+.navbar .container .prof .proDetail p{
+    font-weight: bold;
+}
+.navbar .container .prof .proDetail .ipShow{
+    color: $primary-color;
+}
+
+.navbar .container .logout{
+    width: 150px;
+    height: 38px;
+    border: none;
+    outline: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: $btn-font-size;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+    }
+}
+.section-a .container{
+    @include mainDisplayCol();
+    align-self: center;
+    align-items: center;
+    color: $font-color-forward;
+    margin-top: 100px;
+}
+h2{
+    font-size: 30px;
+    color: black;
+}
+.ipRand{
+    
+    color: $primary-color;
+    font-weight: bolder;
+    font-size: 28px;
+}
+h3{
+    font-size: 25px;
+}
+.section-b .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-self: center;
+    align-items: center;
+    border-top: 0.5px solid $font-color-forward;
+    margin-top: 150px;
+    overflow: auto;
+    height: 250px;
+}
+.section-b .container .loginUsers .updateUserIncoming{
+    width: 130px;
+    height: 30px;
+    border: none;
+    outline: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    align-self: flex-end;
+    margin: 20px 20px ;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+    }
+}
+
+.section-b .container .winner .updateWinnerIncoming{
+    width: 130px;
+    height: 30px;
+    border: none;
+    outline: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    align-self: flex-end;
+    margin: -10px 20px 10px;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+    }
+}
+.loginUsers{
+    border-right: 0.5px solid $font-color-forward;
+    @include mainDisplayCol();
+}
+.winner{
+    @include mainDisplayCol();
+    align-self: flex-start;
+    margin-top: 30px;
+}
+.users{
+    @include setDisplayRow();
+    justify-content: space-between;
+    margin: 6px 20px;
+}
+@media screen and (max-width: 550px){
+    .navbar .container{
+        @include setDisplayCol();
+    }
+    .navbar .container .prof{
+        margin-bottom: 30px;
+    }
+    .section-b .container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .loginUsers{
+        border-bottom: 0.5px solid $font-color-forward;
+        @include mainDisplayCol();
+    }
+}
+

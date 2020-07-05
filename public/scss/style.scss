@@ -1,0 +1,65 @@
+// Width and height of button chance 
+$widthChance: 210px;
+$heightChance: 70px;
+$buttonForeColor: white;
+$primaryBgColor: rgb(238, 238, 238);
+$increaserForeColor: #000;
+$mainFontStyle: 'vazir';
+*{
+    font-family: dosis;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: $primaryBgColor;    
+}
+// Display fixed use flex box
+@mixin displayOrder {
+    display: flex;
+    flex-direction: column; 
+}
+// specified fore style 
+@mixin foreStyle($btnBgColor, $fontSize, $fontFamily, $fontColor, $btnRadius) {
+    background-color: $btnBgColor;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    color: $fontColor;
+    border-radius: $btnRadius;
+    outline: none;
+    border: none;
+}
+.holderNum{
+    @include displayOrder();
+    margin-top: 200px;
+    align-items: center;
+}
+.increaser{
+    color: $increaserForeColor;
+    font-size: 100px;
+    align-self: center;
+    text-align: center;
+    position: fixed;
+}
+button{
+    width: $widthChance;
+    height: $heightChance;
+    @include foreStyle(rgb(32, 168, 116), 20px, 'vazir', $buttonForeColor, 50px);
+    margin-top: 150px;
+    box-shadow: 0 0 0px  rgb(67, 141, 77);
+    transition: 0.3s ease-in-out;
+        &:hover{
+            background-color: transparent;
+            border: 1px solid rgb(32, 168, 116);
+            cursor: pointer;
+            color: black;
+            box-shadow: 0 0 20px  rgb(67, 141, 77);
+        }
+}
+#check{
+    display: none;
+}
+#pResult{
+    font-family: $mainFontStyle;
+    margin-top: 40px;
+    
+}

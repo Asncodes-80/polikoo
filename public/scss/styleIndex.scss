@@ -1,0 +1,343 @@
+$primary-color: #FFD928;
+$font-color-forward:#9F9F9F;
+$btn-font-size: 20px;
+@mixin setDisplayRow {
+    display: flex;
+    flex-direction: row;
+}
+@mixin setSection-aRow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+@mixin mainDisplayCol {
+    display: flex;
+    flex-direction: column;
+}
+@mixin setDisplayCol {
+    display: flex;
+    flex-direction: column-reverse;
+}
+@font-face{
+    font-family: vazir;
+    src: url('Vazir.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: vazir;
+}
+body{
+    @include mainDisplayCol();
+}
+a{
+    text-decoration: none;
+}
+.navbar .container .logo{
+    width: 60px;
+}
+.navbar .container{
+    @include setDisplayRow();
+    justify-content: space-evenly;
+    align-self: center;
+    align-items: center;
+    margin: 40px auto;
+}
+
+.navbar .container ul{
+    list-style-type: none;
+    @include setDisplayRow();
+}
+.navbar .container ul li{
+    margin-left: 40px;
+}
+.navbar .container ul li a{
+    color: $font-color-forward;
+}
+.navbar .container ul li a:hover{
+    color: black;
+}
+.navbar .container ul li:hover{
+    color: black;
+    cursor: pointer;
+}
+.navbar .container .loginBtn{
+    width: 150px;
+    height: 38px;
+    border: none;
+    outline: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: $btn-font-size;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+    }
+}
+
+.section-a {
+    height: 400px;
+    width: 100%;
+    border-bottom: 0.5px solid #e8e7e7;
+  }
+  .section-a .container {
+      @include setSection-aRow();
+      align-self: center;
+      align-items: center;
+      margin: 0 100px;
+  }
+  .textDeco h1{
+    text-align: right;
+    color: black;
+    margin-bottom: 50px;
+  }
+  .textDeco .deco{
+    text-align: right;
+    color: $font-color-forward;
+  }
+  .decoholder p{
+      margin-right: 20px;
+  }
+  .decoholder{
+    border-right: 2px solid $font-color-forward;
+    position: relative;
+    @include setDisplayCol();
+}
+  .full{
+    height: 100%;
+    top: 0;
+    margin-right: 50px;
+    animation: anime 1s ease;
+  }
+  @keyframes anime {
+    0% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 1;
+    }
+  }
+  .rule{
+    width: 150px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: $btn-font-size;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+    }
+    margin-top: 20px;
+    align-self: flex-end;
+  }
+  .mainPol{
+    width: 400px;    
+  }
+  .section-b .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    margin: 40px 80px;
+    
+  }
+  .section-b .container h4{
+      text-align: right;
+      margin-bottom: 50px;
+  }
+
+  .section-b .container p{
+    text-align: justify;
+    color: $font-color-forward;
+}
+.section-c{
+    border-bottom: 0.5px solid $font-color-forward;
+}
+.section-c .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 70px 80px;
+}
+
+.section-c .container h1{
+    text-align: right;
+    margin-bottom: 50px;
+}
+.section-c .container p{
+    text-align: justify;
+    color: $font-color-forward;
+    margin-right: 20px;
+}
+.divi{
+    border-right: 2px solid $font-color-forward;
+}
+.ideaImg{
+    width: 300px;
+    animation: animeIdea 1s ease;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+.section-d{
+    margin-top: 50px;
+}
+.section-d .container{
+    @include mainDisplayCol();
+    align-items: center;
+}
+.section-d .container h1{
+    color: black;
+    margin-bottom: 15px;
+}
+.section-d .container .form{
+    @include setSection-aRow();
+    margin-bottom: 15px;
+}
+.loginSecond{
+    width: 150px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: $primary-color;
+    font-size: $btn-font-size;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    color: black;
+    &:active{
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        color: black;
+        cursor: pointer;
+    }
+}
+.signUp{
+    width: 150px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid $primary-color;
+    font-size: $btn-font-size;
+    border: 2px solid $primary-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    margin-right: 15px;
+    color: black;
+    &:active{
+        background-color: transparent;
+        background-color: $primary-color;
+        cursor: pointer;
+        color: black;
+    }
+}
+.foot{
+    align-self: center;
+}
+.gap{
+    margin: 50px;
+}
+@keyframes animeIdea{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+    @media screen and (max-width: 550px){
+        .section-d{
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    }
+  @media screen and (max-width: 600px){
+    .navbar .container{
+        @include setDisplayCol();
+        align-items: center;
+        margin: 20px auto;
+    }
+    .navbar .container .logo{
+        width: 30px;
+    }
+    .navbar .container ul li{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .navbar .container .loginBtn{
+        margin-top: 15px;
+    }
+    .mainPol{
+        width: 200px; 
+        margin-bottom: 50px;
+    }
+    .textDeco .deco{
+        text-align: justify;
+        color: $font-color-forward;
+    }
+      .deco{
+        margin-right: 0px;
+    }
+      .full{
+          margin-right: 0px;
+    }
+      .section-b .container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 50px;
+      }
+}
+@media screen and (max-width: 900px){
+    .section-a .container {
+        @include setDisplayCol();
+        align-self: center;
+        align-items: center;
+        margin: 0 100px;
+      //   margin: 40px auto;
+    }
+    .section-b .container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 50px;
+    }
+    .section-a {
+        height: 800px;
+        width: 100%;
+    }
+    .section-c .container{
+        // display: grid;
+        // grid-template-columns: repeat(1, 1fr);
+        display: flex;
+        flex-direction: column;
+    }
+    .section-c .container div{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+    .ideaImg{
+        width: 300px;
+        animation: animeIdea 1s ease;
+        margin-left: 0px;
+        margin-bottom: 50px;
+        margin-top: 0;
+    }
+    .section-d .container h1{
+        text-align: center;
+    }
+    .section-d .container .form{
+        @include mainDisplayCol();
+    }
+    .loginSecond{
+        margin-bottom: 15px;
+    }
+}  

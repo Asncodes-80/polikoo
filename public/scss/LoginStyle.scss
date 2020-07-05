@@ -1,0 +1,166 @@
+$primary-color: #FFD928;
+$btn-width: 125px;
+$btn-height: 38px;
+
+@mixin bodyDisplayCol {
+    display: flex;
+    flex-direction: column;
+}
+@mixin bodyDisplayRow {
+    display: flex;
+    flex-direction: row;
+}
+@mixin createBtn($w, $h, $radius, $bg-color, $border-color) {
+    width: $w;
+    height: $h;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: $bg-color;
+    font-size: 20px;
+    border: 2px solid $border-color;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    color: black;
+}
+@font-face{
+    font-family: vazir;
+    src: url('../assets/font/Vazir.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: vazir;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    background-color: $primary-color;
+    @include bodyDisplayCol();
+}
+.section-a .container{
+    @include bodyDisplayCol();
+    align-self: center;
+    align-items: center;
+    margin: 100px;
+}
+.section-a .container h5{
+    margin-top: 20px;
+}
+.section-a .container .polikoo{
+    width: 60px;
+}
+.section-a .container .circular{
+    width: 200px;
+    height: 150px;
+    background-color: $primary-color;
+    @include bodyDisplayCol();
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+.section-b{
+    align-self: center;
+    align-items: center;
+    margin-top: -150px;
+    margin-bottom: 500px;
+}
+.section-b .container{
+    @include bodyDisplayCol();
+    width: 400px;
+    height: 400px;
+    align-self: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 5px rgb(133, 133, 133);
+}
+.nestedForm{
+    margin-top: 100px;
+}
+.section-b .container .username{
+    @include bodyDisplayRow();
+    background-color: white;
+    width: 300px;
+    height: 60px;
+    border: 2px solid transparent;
+    align-items: center;
+    box-shadow: 0 0 5px rgb(185, 185, 185);
+    border-radius: 5px;
+    transition: 0.5s ease-in-out;
+}
+.section-b .container .username:hover{
+    box-shadow: 0 0 0;
+    border: 2px solid rgb(211, 211, 18);
+}
+.usr{
+    border: none;
+    width: 230px;
+    height: 50px;
+    text-align: right;
+    margin-left: 20px;
+    outline: none;
+}
+.usrIcon{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 38px;
+}
+.section-b .container .password{
+    @include bodyDisplayRow();
+    background-color: white;
+    width: 300px;
+    height: 60px;
+    align-items: center;
+    box-shadow: 0 0 10px rgb(133, 133, 133);
+    margin-top: 30px;
+    box-shadow: 0 0 5px rgb(185, 185, 185);
+    border-radius: 5px;
+}
+.pass{
+    border: none;
+    width: 230px;
+    height: 50px;
+    text-align: right;
+    margin-left: 20px;
+    outline: none;
+}
+.usrIcon{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 38px;
+}
+.section-b .container .form {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 40px;
+  }
+  .loginSecond {
+    @include createBtn($btn-width, $btn-height, 10px, $primary-color, $primary-color);
+}
+  
+  .loginSecond:hover {
+    @include createBtn($btn-width, $btn-height, 10px, transparent, $primary-color);
+    border: 2px solid $primary-color;
+    cursor: pointer;
+  }
+  
+  .signUp {
+    @include createBtn(150px , 38px, 10px, transparent, $primary-color);
+    margin-right: 15px;
+  }
+  
+  .signUp:hover {
+    @include createBtn(150px , 38px, 10px, $primary-color, $primary-color);
+    cursor: pointer;
+  }
+
+
+@media screen and (max-width: 650px){
+    .section-b .container{
+        height: 400px;
+    }
+}

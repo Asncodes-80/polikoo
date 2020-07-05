@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود به پولی کو</title>
+    <link rel="stylesheet" href="/css/LoginStyle.css">
+</head>
+<body>
+    <section class="section-a">
+        <div class="container">
+            <div class="circular">
+                <img src="/assets/img/PolikooLogin.png" class="polikoo" alt="PolikooLogo">
+                <h4>پولی کو</h4>
+                <h5>ورود به حساب</h5>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-b">
+        <div class="container">
+            <form action="login_process" method="POST" class="nestedForm">
+                <h4><%- msg%></h4>
+                <div class="username">
+                    <input placeholder="نام کاربری" type="text" class="usr" name="username" id="usr">
+                    <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
+                </div>
+                <div class="password">
+                    <input placeholder="گذرواژه" type="password" class="pass" name="password" id="pass">
+                    <img src="/assets/img/password.png" class="usrIcon" alt="passwordIcon">
+                </div>
+
+                <div class="form">
+                    <button class="loginSecond">ورود</button>
+                    <a href="signup" class="signupLink" >!حسابی تو پولی کو نداری؟ پس به ما ملحق شو</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        //src="https://unpkg.com/axios/dist/axios.min.js"
+    /*//http://535916be4dac.ngrok.io/
+    const user = document.getElementById('usr').innerText;
+    const pass = document.getElementById('pass').innerText;
+    const polikooAPI = 'http://535916be4dac.ngrok.io/';
+    axios.post(polikooAPI, );*/
+
+    /*function login(){
+        const user = document.getElementById('usr').value;
+        const pass = document.getElementById('pass').value;
+        window.alert(user+pass);
+    }*/
+
+    </script>
+    
+</body>
+</html>

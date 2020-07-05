@@ -1,0 +1,202 @@
+@font-face {
+  font-family: vazir;
+  src: url("../assets/font/Vazir.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: vazir;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar .container .logo {
+  width: 60px;
+}
+
+.navbar .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  align-items: center;
+  margin: 40px 80px;
+}
+
+.navbar .container .prof {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.navbar .container .prof .proDetail {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.navbar .container .prof .proDetail p {
+  font-weight: bold;
+}
+
+.navbar .container .prof .proDetail .ipShow {
+  color: #FFD928;
+}
+
+.navbar .container .logout {
+  width: 150px;
+  height: 38px;
+  border: none;
+  outline: none;
+  color: #000;
+  border-radius: 5px;
+  background-color: #FFD928;
+  font-size: 20px;
+  border: 2px solid #FFD928;
+  text-align: center;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar .container .logout:hover {
+  background-color: transparent;
+  border: 2px solid #FFD928;
+  cursor: pointer;
+}
+
+.section-a .container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  color: #9F9F9F;
+  margin-top: 100px;
+}
+
+h2 {
+  font-size: 30px;
+  color: black;
+}
+
+.ipRand {
+  color: #FFD928;
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+.section-b .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-self: center;
+  align-items: center;
+  border-top: 0.5px solid #9F9F9F;
+  margin-top: 150px;
+  overflow: auto;
+  height: 250px;
+}
+
+.section-b .container .loginUsers .updateUserIncoming {
+  width: 130px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #000;
+  border-radius: 5px;
+  background-color: #FFD928;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #FFD928;
+  text-align: center;
+  transition: 0.2s ease-in-out;
+  align-self: flex-end;
+  margin: 20px 20px;
+}
+
+.submitWinner{
+  color: #a78e20;
+  transition: .3s ease;
+}
+.submitWinner:hover{
+  text-decoration: underline;
+  font-size: 30px;
+}
+.section-b .container .loginUsers .updateUserIncoming:hover {
+  background-color: transparent;
+  border: 2px solid #FFD928;
+  cursor: pointer;
+}
+
+.section-b .container .winner .updateWinnerIncoming {
+  width: 130px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #000;
+  border-radius: 5px;
+  background-color: #FFD928;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #FFD928;
+  text-align: center;
+  transition: 0.2s ease-in-out;
+  align-self: flex-end;
+  margin: -10px 20px 10px;
+}
+
+.section-b .container .winner .updateWinnerIncoming:hover {
+  background-color: transparent;
+  border: 2px solid #FFD928;
+  cursor: pointer;
+}
+
+.loginUsers {
+  border-right: 0.5px solid #9F9F9F;
+  display: flex;
+  flex-direction: column;
+}
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 30px;
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 6px 20px;
+}
+
+@media screen and (max-width: 550px) {
+  .navbar .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .navbar .container .prof {
+    margin-bottom: 30px;
+  }
+  .section-b .container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .loginUsers {
+    border-bottom: 0.5px solid #9F9F9F;
+    display: flex;
+    flex-direction: column;
+  }
+}
+/*# sourceMappingURL=gMode.css.map */

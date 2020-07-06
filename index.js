@@ -32,7 +32,11 @@ const login = require('./routes/loginRouter');
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
+const loaderScreen = require('./routes/loaderRoute');
+const submit_process = require('./routes/submit_process');
 const logout = require('./routes/logout');
+
+
 
 // Create a middleware to get admin random number
 app.use((req, res, next)=>{
@@ -52,7 +56,10 @@ app.use('/login', login);
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);
+app.use('/userAccountPreparing', loaderScreen);
+app.use('/submit_process', submit_process)
 app.use('/logout', logout);
+
 
 app.get('/account/:userId', (req, res, next)=>{
     const userId = req.params.userId;
@@ -64,8 +71,9 @@ app.get('/account/:userId', (req, res, next)=>{
         conn.query(cmd, (err, results)=>{
             if(err)  res.redirect('login');
             // To authentication of user if his exists.
-            if(results != "")            
+            if(results != ""){
                 res.render('account', {results: results});
+            }            
             else
                 res.redirect('/login?msg=dbFailure');
         })
@@ -77,6 +85,7 @@ app.get('/account/:userId', (req, res, next)=>{
         res.redirect('login');
     }
 });
+
 
 app.listen(4000);
 console.log('your server port is 4000');

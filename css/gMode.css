@@ -124,15 +124,6 @@ h3 {
   margin: 20px 20px;
 }
 
-.submitWinner{
-  color: #a78e20;
-  display: none;
-  transition: .3s ease;
-}
-.submitWinner:hover{
-  text-decoration: underline;
-  font-size: 30px;
-}
 .section-b .container .loginUsers .updateUserIncoming:hover {
   background-color: transparent;
   border: 2px solid #FFD928;

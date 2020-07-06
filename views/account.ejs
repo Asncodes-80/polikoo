@@ -34,7 +34,12 @@
                         <h4>:جمع ارقام آی پی شما </h4>
                         <h1 id="sumIP"></h1>
                         <h1 id="result"></h1>
-                        <a href="/submit_process" class="submitWinner">...اینجا را برای ثبت شدن کلیک کنید</a>
+                        <form action="/submit_process" method="POST">
+                          <button 
+                            class="submitWinner" 
+                            id="submitWinner">...اینجا را برای ثبت شدن کلیک کنید</button>
+                        </form>
+                      
                     </div>
                 </section>
             <%})%>
@@ -128,7 +133,7 @@
                 $(this).prop('Counter',0).animate({
                    Counter: $(this).text(),
                 }, {
-                   duration: 8000,
+                   duration: 10000,
                    easing: 'swing',
                    step: function (now) {
                        $(this).text(Math.ceil(now));
@@ -143,11 +148,12 @@
 				    if(sumi == ipRand){
                         document.getElementById("result").innerHTML = 'شما برنده شده اید برروی لینک زیر کلیک کنید تا تایید شوید';
                         document.getElementById("result").style.color = "#d3d312"
+                        document.getElementById("submitWinner").style.display = "block"
                     }else{
                         document.getElementById("result").innerHTML = 'شما در این دست پذیرفته نشده اید';
                         document.getElementById("result").style.color = "red"
                     }       
-				}, 8000);
+				}, 10000);
              })
              
             

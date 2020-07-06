@@ -10,41 +10,40 @@ const conn = mySql.createConnection({
     database: 'polikoo' //accounts table
 }); 
 
+// Processing login username password
 router.post('/', (req, res, next)=>{
     const username = req.body.username;
     const password = req.body.password;
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, (err, salt)=>{
-        bcrypt.hash(password, salt, (err, hash)=>{
-            console.log(username, hash);
-            const cmd = `select * from accounts where username like "%${username}%" and password like "%${hash}%"`;
-            conn.query(cmd, (err, results)=>{
+
+    if(username !== "" && password !== ""){
+        const cmd = `select * from accounts where username like "%${username}%"`;
+        conn.query(cmd, (err, results)=>{
+            // error parser 
             if(err){
-                return res.redirect('/login');
-            }else{
-                res.cookie("username", username);
-                res.cookie("password", hash);
-                console.log(results);
-                res.redirect(`/account/${username}`);
+                res.redirect('/login?msg=dbFailure');
+                console.log('database error to auth');
             }
-        })
-        })
-    })
-    // if(username !== "" && password !== ""){
-    //     const cmd = `select * from accounts where username like "%${username}%" and password like "%${password}%"`;
-    //     conn.query(cmd, (err, results)=>{
-    //         if(err){
-    //             return res.redirect('/login');
-    //         }else{
-    //             res.cookie("username", username);
-    //             res.cookie("password", password);
-    //             console.log(results);
-    //             res.redirect(`/account/${username}`);
-    //         }
-    //     })
-    // }else{
-    //     res.redirect(`login?msg=failure`);
-    // }
+            // results to get password 
+            if(results != ""){
+                const resultPreparing = results[0];
+                bcrypt.compare(password, resultPreparing.password, (error, match)=>{
+                    if(!match){
+                        res.redirect(`login?msg=dbFailure`);
+                        console.log('failed')
+                    }else{
+                        res.cookie("username", username);
+                        res.cookie("password", resultPreparing.password);
+                        // res.redirect(`/account/${username}`);
+                        console.log(match)
+                        res.redirect('userAccountPreparing');
+                    }
+                });
+            }else{
+                res.redirect(`login?msg=failure`);
+            }
+        });
+    }else
+        res.redirect(`login?msg=failure`);
 });
 
 

@@ -1,0 +1,9 @@
+kind: ExternalService
+name: polikoo
+spec:
+  image_pull_policy: Always
+  port: 4000
+  source:
+    context: .
+    node_version: '10'
+    project_type: nodejs

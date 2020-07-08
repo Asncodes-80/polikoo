@@ -46,7 +46,7 @@ const logout = require('./routes/logout');
 // app.use('/admin9903', adminRoute);
 app.use('/adminlogin', adminLogin);
 app.use('/admin_login_process', admin_login_process);
-app.use('/generate_randy', generate_randy);
+app.use('/admin/generate_randy', generate_randy);
 app.use('/', index);
 app.use('/login', login);
 app.use('/signup', signup);

@@ -4,11 +4,11 @@ const mySql = require('mysql');
 
 // Create connection to db MySQL
 const conn = mySql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'polikoo' //accounts table
-}); 
+    host:'158.58.187.220',
+    user:'TarjomanUser',
+    password:'Mez76%f1',
+    database:'tarjomandb'
+});
 
 router.post('/', (req, res, next)=>{
     const username = req.cookies.username;

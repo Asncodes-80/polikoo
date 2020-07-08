@@ -42,6 +42,12 @@
                     <input placeholder="کد ملی" type="text" class="usr" name="ntCode">
                     <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
                 </div>
+                <div class="attention">
+                    <label>
+                        <input id="randy" type="text" name="ipaddress">
+                        :آیپی حال حاضر شما 
+                    </label>
+                </div>
 
                 <div class="form">
                     <button class="loginSecond">ثبت نام</button>
@@ -49,7 +55,7 @@
                 </div>
             </form>
         </div>
-        <input id="randy" type="text"  name="ipaddress">
+
     </section>
     <script>
         fetch('https://api.ipify.org/?format=json')

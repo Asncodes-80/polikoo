@@ -214,6 +214,17 @@ body {
     color: black;
     cursor: pointer;
 }
+.attention{
+    align-self: center;
+    align-items: center;
+    margin-top: 10px;
+}
+#randy{
+    border: none;
+    background-color: transparent;
+    color: black;
+    text-align: right;
+}
 
 @media screen and (max-width: 650px) {
     .section-b .container {

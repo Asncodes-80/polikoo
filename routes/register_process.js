@@ -16,12 +16,11 @@ const conn = mySql.createConnection({
 //register_process
 router.post('/', (req, res, next)=>{
     const saltRounds = 10;
-    (async () => {
         const fullname = req.body.fullname;
         const username = req.body.username;
         const password = req.body.password;
         const ntCode = req.body.ntCode;
-        const ipAddre = await publicIp.v4();
+        const ipAddre = req.body.ipaddress;
         console.log(ipAddre);
         //hashing passwords
         bcrypt.genSalt(saltRounds, (err, salt)=>{
@@ -51,7 +50,6 @@ router.post('/', (req, res, next)=>{
             
             });
         });
-    })();
 });
 
 

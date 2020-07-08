@@ -120,7 +120,7 @@
             var ipRand = document.getElementById('ipRand').innerHTML;
             var sumi = 0;// 0 
             var i = 0;
-            for(i; i< userIp.length; i++){
+           /**/ for(i; i< userIp.toString().length;){
                 if(userIp[i]!='.'){
                     sumi = sumi + parseInt(userIp[i]);
                     i++;
@@ -129,7 +129,8 @@
                  }
             }
             document.getElementById("sumIP").innerHTML = sumi;
-            $('#sumIP').each(function () {
+            //document.getElementById("sumIP").innerHTML = i;
+            /*$('#sumIP').each(function () {
                 $(this).prop('Counter',0).animate({
                    Counter: $(this).text(),
                 }, {
@@ -139,7 +140,7 @@
                        $(this).text(Math.ceil(now));
                    }
                 })
-             }); 
+             }); */
 
             var result = document.getElementById("result");
             // Runnig equiment function to wonnder or looser

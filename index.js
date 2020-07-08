@@ -30,6 +30,8 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 // The Router
+const adminRoute = require('./routes/adminRoute');
+const generate_randy = require('./routes/generate_randy');
 const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
 const signup = require('./routes/signupRouter');
@@ -53,13 +55,15 @@ app.use((req, res, next)=>{
     next();
 })
 
+app.use('/admin9903', adminRoute);
+app.use('/generate_randy', generate_randy);
 app.use('/', index);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);
 app.use('/userAccountPreparing', loaderScreen);
-app.use('/submit_process', submit_process)
+app.use('/submit_process', submit_process);
 app.use('/logout', logout);
 
 

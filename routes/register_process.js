@@ -41,7 +41,7 @@ router.post('/', (req, res, next)=>{
                     if(err) {
                         res.redirect('/signup?msg=dbFailure');
                     }else{
-                        res.redirect('login');
+                        res.redirect('login?msg=success');
                     }
                 });
             }else{

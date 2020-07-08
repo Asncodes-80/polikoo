@@ -1,0 +1,40 @@
+$primary-color :#FFD928;
+
+@mixin display-main {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+}
+@mixin display-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+}
+body{
+    background-color: $primary-color;
+    @include display-main();
+}
+form{
+    @include display-form();
+}
+form button{
+    border: none;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: 0.2s ease;
+    font-weight: bold;
+    font-size: 25px;
+    &:hover{
+        border: 10px solid white;
+        background-color: $primary-color;
+        cursor: pointer;
+        
+    }
+}
+form label{
+    margin-top: 15px;
+}

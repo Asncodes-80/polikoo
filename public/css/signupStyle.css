@@ -224,6 +224,7 @@ body {
     background-color: transparent;
     color: black;
     text-align: right;
+    outline: none;
 }
 
 @media screen and (max-width: 650px) {

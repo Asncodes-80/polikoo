@@ -22,6 +22,7 @@ router.post('/', (req, res, next)=>{
         const password = req.body.password;
         const ntCode = req.body.ntCode;
         const ipAddre = await publicIp.v4();
+        console.log(ipAddre);
         //hashing passwords
         bcrypt.genSalt(saltRounds, (err, salt)=>{
             bcrypt.hash(password, salt, (err, hash)=>{

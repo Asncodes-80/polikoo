@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ثبت نام در پولی کو</title>
     <link rel="stylesheet" href="/css/signupStyle.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </head>
 <body>
 
@@ -48,6 +49,14 @@
                 </div>
             </form>
         </div>
+        <input id="randy" type="text"  name="ipaddress">
     </section>
+    <script>
+        fetch('https://api.ipify.org/?format=json')
+        .then(results => results.json())
+        .then(data => {
+            document.getElementById("randy").value=data.ip;
+        });
+    </script>
 </body>
 </html>

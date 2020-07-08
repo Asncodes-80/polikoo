@@ -13,7 +13,6 @@ npm-debug.log*
 jspm_packages/
 node_modules/
 node_modules
-public
 logs
 build/Release
 *.pid.lock

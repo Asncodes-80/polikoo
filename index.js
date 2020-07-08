@@ -21,7 +21,10 @@ conn.connect((err)=>{
 app.use(helmet());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
-app.use(express.static('public'))
+// app.use(express.static('public'))
+app.use('/css', express.static(path.join(__dirname + '/public/css')));
+app.use('/assets/img', express.static(path.join(__dirname + '/public/assets/img')))
+app.use('/assets/font', express.static(path.join(__dirname + '/public/assets/font')))
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());

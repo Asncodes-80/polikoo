@@ -40,7 +40,6 @@ const submit_process = require('./routes/submit_process');
 const logout = require('./routes/logout');
 
 
-
 // Create a middleware to get admin random number
 app.use((req, res, next)=>{
     let cmd = 'select * from admin';

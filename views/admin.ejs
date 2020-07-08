@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پولی کو- ادمین</title>
-    <link rel="stylesheet" href="css/adminStyle.css">
+    <link rel="stylesheet" href="/css/adminStyle.css">
 </head>
 <body>
     <form action="generate_randy" method="POST">
         <button>Generating Random</button>
         <label>Hint: Random number is in range of 0...71</label>
     </form>
+    <table>
+        <tr>
+             <th>
+                 Username
+             </th>   
+        </tr>
+        <% results.forEach((item)=>{%>
+            <tr>
+                <td>
+                    <%= item.username %>
+                </td>   
+           </tr>
+        <%})%>
+    </table>
 </body>
 </html>

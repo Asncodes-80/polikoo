@@ -30,7 +30,9 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 // The Router
-const adminRoute = require('./routes/adminRoute');
+// const adminRoute = require('./routes/adminRoute');
+const adminLogin = require('./routes/adminLogin');
+const admin_login_process = require('./routes/admin_login_process');
 const generate_randy = require('./routes/generate_randy');
 const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
@@ -40,6 +42,19 @@ const login_process = require('./routes/login_process');
 const loaderScreen = require('./routes/loaderRoute');
 const submit_process = require('./routes/submit_process');
 const logout = require('./routes/logout');
+
+// app.use('/admin9903', adminRoute);
+app.use('/adminlogin', adminLogin);
+app.use('/admin_login_process', admin_login_process);
+app.use('/generate_randy', generate_randy);
+app.use('/', index);
+app.use('/login', login);
+app.use('/signup', signup);
+app.use('/register_process', register_process);
+app.use('/login_process', login_process);
+app.use('/userAccountPreparing', loaderScreen);
+app.use('/submit_process', submit_process);
+app.use('/logout', logout);
 
 
 // Create a middleware to get admin random number
@@ -54,17 +69,6 @@ app.use((req, res, next)=>{
     });
     next();
 })
-
-app.use('/admin9903', adminRoute);
-app.use('/generate_randy', generate_randy);
-app.use('/', index);
-app.use('/login', login);
-app.use('/signup', signup);
-app.use('/register_process', register_process);
-app.use('/login_process', login_process);
-app.use('/userAccountPreparing', loaderScreen);
-app.use('/submit_process', submit_process);
-app.use('/logout', logout);
 
 
 app.get('/account/:userId', (req, res, next)=>{
@@ -91,6 +95,31 @@ app.get('/account/:userId', (req, res, next)=>{
         res.redirect('login');
     }
 });
+
+
+app.get('/admin/:adminId', (req, res, next)=>{
+    const adminId = req.params.adminId;
+    const cookeAdmin =  req.cookies.adminId;
+
+    if(adminId === cookeAdmin){
+        const cmd = `select * from winner`;
+        conn.query(cmd, (err, results)=>{
+            if(err) {
+                res.redirect('adminlogin?msg=failure');
+                console.log(err);
+            } 
+            // To authentication of user if his exists.
+            if(results != ""){
+                res.render('admin', {results: results});
+            }            
+            else
+                res.redirect('/adminlogin?msg=failure');
+        })
+    }else{
+        res.redirect('adminlogin?msg=dbFailure');
+    }
+});
+
 
 
 app.listen(4000);

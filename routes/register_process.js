@@ -1,17 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mySql = require('mysql');
+const dbConfig = require('../config/db')
 const publicIp = require('public-ip');
 const bcrypt = require('bcrypt');
-
-
 // Create connection to db MySQL
-const conn = mySql.createConnection({
-    host:'158.58.187.220',
-    user:'TarjomanUser',
-    password:'Mez76%f1',
-    database:'tarjomandb'
-});
+const conn = mySql.createConnection(dbConfig);
 
 //register_process
 router.post('/', (req, res, next)=>{
@@ -35,19 +29,30 @@ router.post('/', (req, res, next)=>{
                 
                 if(fullname!=="" && username!=="" &&
                 password!=="" && ntCode!==""){
-                // SQL command
-                const cmd = 'insert into accounts set ?';
-                conn.query(cmd, usrData, (err, results)=>{
-                    if(err) {
-                        res.redirect('/signup?msg=dbFailure');
+                    if(password.length >= 8){
+                        // SQL command
+                        const cmd = 'insert into accounts set ?';
+                        conn.query(cmd, usrData, (err, results)=>{
+                            if(err) {
+                                res.redirect('/signup?msg=dbFailure');
+                            }else{
+                                const data = {username: username, additionip: req.body.ipAddition}; 
+                                const cmd = 'insert into restip set ?';
+                                conn.query(cmd, data, (err, result)=>{
+                                    if(err){
+                                        res.redirect('/signup?msg=dbFailure');
+                                    }else{
+                                        res.redirect('login?msg=success');
+                                    }
+                                })
+                            }
+                        });
                     }else{
-                        res.redirect('login?msg=success');
+                        res.redirect('/signup?msg=lengthStricts');
                     }
-                });
-            }else{
-                res.redirect('/signup?msg=failure');
-            }
-            
+                }else{
+                    res.redirect('/signup?msg=failure');
+                }
             });
         });
 });

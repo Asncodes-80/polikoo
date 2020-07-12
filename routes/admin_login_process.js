@@ -2,14 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mySql = require('mysql');
 const bcrypt = require('bcrypt');
+const dbConfig = require('../config/db');
 
 // Create connection to db MySQL
-const conn = mySql.createConnection({
-    host:'158.58.187.220',
-    user:'TarjomanUser',
-    password:'Mez76%f1',
-    database:'tarjomandb'
-});
+const conn = mySql.createConnection(dbConfig);
 
 // Processing login username password
 router.post('/', (req, res, next)=>{

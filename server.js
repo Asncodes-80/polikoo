@@ -4,14 +4,9 @@ const app = express();
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const mySql = require('mysql');
-
+const config = require('./config/db')
 // Create connection to db MySQL
-const conn = mySql.createConnection({
-    host:'158.58.187.220',
-    user:'TarjomanUser',
-    password:'Mez76%f1',
-    database:'tarjomandb'
-});
+const conn = mySql.createConnection(config);
 // Check out connection is true or false
 conn.connect((err)=>{
     if(err) return console.log('Connection failed');
@@ -26,7 +21,7 @@ app.use('/css', express.static(path.join(__dirname + '/public/css')));
 app.use('/assets/img', express.static(path.join(__dirname + '/public/assets/img')))
 app.use('/assets/font', express.static(path.join(__dirname + '/public/assets/font')))
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
 
 // The Router
@@ -56,6 +51,11 @@ app.use('/userAccountPreparing', loaderScreen);
 app.use('/submit_process', submit_process);
 app.use('/logout', logout);
 
+
+// ================404 Page Not found==================
+// app.all('*', (req, res, next)=>{
+//     res.render('404');
+// });
 
 // Create a middleware to get admin random number
 app.use((req, res, next)=>{
@@ -119,6 +119,7 @@ app.get('/admin/:adminId', (req, res, next)=>{
         res.redirect('adminlogin?msg=dbFailure');
     }
 });
+
 
 
 

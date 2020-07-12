@@ -24,24 +24,25 @@
             <h4><%- msg %></h4>
             <form action="register_process" method="POST" class="nestedForm">
                 <div class="username" style="margin-bottom: 30px;">
-                    <input placeholder="نام کامل" type="text" class="usr" name="fullname">
+                    <input placeholder="نام کامل" type="text" maxlength="30" class="usr" id="fullname" name="fullname">
                     <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
                 </div>
 
                 <div class="username">
-                    <input placeholder="نام کاربری" type="text" class="usr" name="username">
+                    <input placeholder="نام کاربری" maxlength="30" type="text" id="username" class="usr" name="username">
                     <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
                 </div>
 
                 <div class="password" style="margin-bottom: 30px;">
-                    <input placeholder="گذرواژه" type="password" class="pass" name="password">
+                    <input placeholder="گذرواژه" maxlength="20" type="password" id="password" class="pass" name="password">
                     <img src="/assets/img/password.png" class="usrIcon" alt="passwordIcon">
                 </div>
 
                 <div class="username">
-                    <input placeholder="کد ملی" type="text" class="usr" name="ntCode">
+                    <input placeholder="کد ملی" maxlength="10" type="text" id="ntCode" class="usr" name="ntCode">
                     <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
                 </div>
+                <p id="ntCodeErr"></p>
                 <div class="attention">
                     <label>
                         <input id="randy" type="text" name="ipaddress" readonly>
@@ -49,20 +50,40 @@
                     </label>
                 </div>
 
+                <input id="sumIP" type="text" name="ipAddition" style="display: none;"  readonly />
+                
                 <div class="form">
-                    <button class="loginSecond">ثبت نام</button>
+                    <button class="loginSecond" id="loginSecond">ثبت نام</button>
                     <a href="login" class="loginLink">حساب خود را در پولی کو وارد کنید</a>
                 </div>
             </form>
         </div>
-
     </section>
     <script>
         fetch('https://api.ipify.org/?format=json')
         .then(results => results.json())
         .then(data => {
             document.getElementById("randy").value=data.ip;
+            var userIp = data.ip.toString();
+           /**/ var sumi = 0; // 0 
+            var i = 0; // index
+            for(i; i< userIp.length; ){
+                if(userIp[i]!='.'){
+                    sumi = sumi + parseInt(userIp[i]);
+                    i++;
+                 }else{
+                    i++;
+                 }
+            }
+            document.getElementById("sumIP").value = sumi;
         });
+    </script>
+
+    <script>
+        var ntCode = document.getElementById('ntCode').innerText;
+        if(ntCode.length < 10){
+            document.getElementById('ntCodeErr').innerText = 'کد ملی شما حداقل باید 10 کارکتر باشد'
+        }
     </script>
 </body>
 </html>

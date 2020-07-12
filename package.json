@@ -4,10 +4,10 @@
   "description": "![PolikooLogoTernd](https://github.com/AlirezaSoltaniNeshan/Gambling/blob/master/assets/img/PolikooLogo.png)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alireza AlirezaSoltaniNeshan",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",

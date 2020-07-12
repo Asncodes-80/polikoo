@@ -6,6 +6,8 @@ router.use((req, res, next)=>{
         break;
         case 'dbFailure': res.locals.msg = `مشکلی از سوی دیتابیس در هنگام وارد کردن اطلاعات شما بوجود آمده!\nلطفا مجددا امتحان کنید`;
         break;
+        case 'lengthStricts': res.locals.msg = '!رمز شما باید حداقل 8 کلمه داشته باشد'
+            break;
         default:
             res.locals.msg = ``;
     }

@@ -20,10 +20,14 @@ router.post('/', (req, res, next)=>{
             if(err) res.send(err);
             // if he's exists:
             if(results !=""){
-                // Saving user in cookie to get yaro to data base fetching
-                res.cookie("username", username);
-                // Loading Time 2sec...
-                res.redirect('/userAccountPreparing');  
+                if(results[0].naturalcode == ntCode){
+                    // Saving user in cookie to get yaro to data base fetching
+                    res.cookie("username", username);
+                    // Loading Time 2sec...
+                    res.redirect('/userAccountPreparing');  
+                }else{
+                    res.redirect('/login?msg=ntFailed')
+                }
             }else{
                  // JS object           
                 const data = {

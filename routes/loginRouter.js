@@ -9,6 +9,8 @@ router.use((req, res, next)=>{
             break; 
         case 'success': res.locals.msg = `شما با موفقیت عضو سایت شده اید `
             break;
+        case 'ntFailed': res.locals.msg = 'کد ملی وارد شده با کد ملی ثبت شده مغایرت دارد';
+            break; 
         default:
             res.locals.msg = ``;
     }

@@ -89,7 +89,7 @@ app.use('/submit_process', submit_process);
 app.use('/logout', logout);
 
 
-// ================404 Page Not found==================
+// ================404 Page Not found===============
 // app.all('*', (req, res, next)=>{
 //     res.render('404');
 // });
@@ -105,8 +105,7 @@ app.use((req, res, next)=>{
             res.locals.adResults = ``;
     });
     next();
-})
-
+});
 
 app.get('/account/:userId', (req, res, next)=>{
     const userId = req.params.userId;

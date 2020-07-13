@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحه ورود به پولی کو</title>
     <link rel="stylesheet" href="/css/LoginStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <section class="section-a">
@@ -35,24 +36,34 @@
                     <a href="signup" class="signupLink" >!حسابی تو پولی کو نداری؟ پس به ما ملحق شو</a>
                 </div>
             </form>
+            <div class="otherSignMethod">
+                <div class="line-1"></div>
+                <div class="line-or">یا</div>
+                <div class="line-2"></div>
+            </div>
+
+            <div class="signInMethod">
+                <!-- GitHub login -->
+                <a href="/gitLogin">
+                    <div class="gitLogin">
+                        <div class="placeGit">
+                            <i class="fa fa-github" id="gitIcon"></i>
+                        </div>
+                        <label>!با حساب گیت هابت وارد شو</label>
+                    </div>
+                </a>
+                <!-- Google login -->
+                <a href="">
+                    <div class="googleLogin">
+                        <div class="placeGoogle">
+                            <i class="fa fa-google" id="googleIcon"></i>
+                        </div>
+                            <label>!با حساب گوگلت وارد شو</label>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-    </section>
-
-    <script>
-        //src="https://unpkg.com/axios/dist/axios.min.js"
-    /*//http://535916be4dac.ngrok.io/
-    const user = document.getElementById('usr').innerText;
-    const pass = document.getElementById('pass').innerText;
-    const polikooAPI = 'http://535916be4dac.ngrok.io/';
-    axios.post(polikooAPI, );*/
-
-    /*function login(){
-        const user = document.getElementById('usr').value;
-        const pass = document.getElementById('pass').value;
-        window.alert(user+pass);
-    }*/
-
-    </script>
-    
+    </section>    
 </body>
 </html>

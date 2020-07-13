@@ -1,6 +1,6 @@
 @font-face {
   font-family: vazir;
-  src: url("../assets/font/Vazir.ttf");
+  src: url("assets/font/Vazir.ttf");
 }
 
 * {
@@ -60,7 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 400px;
+  height: 600px;
   align-self: center;
   align-items: center;
   background-color: white;
@@ -69,7 +69,6 @@ body {
 
 .nestedForm {
   margin-top: 100px;
-  align-items: center;
 }
 
 .section-b .container .username {
@@ -89,14 +88,7 @@ body {
   box-shadow: 0 0 0;
   border: 2px solid #d3d312;
 }
-.section-b .container h4{
-  text-align: center;
-  align-self: center;
-  align-items: center;
-  margin-top: -30px;
-  margin-bottom: 20px;
-  color: red;
-}
+
 .usr {
   border: none;
   width: 230px;
@@ -143,16 +135,18 @@ body {
 .section-b .container .form {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   margin-top: 40px;
-  align-self: center;
-  align-items: center;
+}
+.signupLink{
+  margin-top: 15px;
+  color: #858585;
+  font-size: 12px;
+}
+.signupLink:hover{
+  color: #000;
 }
 
-.signupLink{
-  font-size: 14px;
-  margin-top: 20px;
-  color: #a88a0a;
-}
 
 .loginSecond {
   width: 125px;
@@ -166,6 +160,7 @@ body {
   text-align: center;
   transition: 0.2s ease-in-out;
   color: black;
+  margin-top: -15px;
 }
 
 .loginSecond:hover {
@@ -214,9 +209,101 @@ body {
   cursor: pointer;
 }
 
+.section-b .container .otherSignMethod{
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+.section-b .container .otherSignMethod .line-1{
+  border-top: 2px solid #CCCCCC;
+  width: 130px;
+  align-self: center;
+  margin-right: 10px;
+}
+.section-b .container .otherSignMethod .line-2{
+  border-top: 2px solid #CCCCCC;
+  width: 130px;
+  align-self: center;
+  margin-left: 10px;
+}
+.section-b .container .otherSignMethod .line-or{
+  color: #acacac;
+}
+.section-b .container .signInMethod{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.section-b .container .signInMethod .gitLogin{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 300px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #393939;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px #000000;
+  transition: 0.1s ease-in-out;
+  align-items: center;
+}
+.section-b .container .signInMethod .gitLogin:hover{
+  box-shadow: 0 0 10px -1px #000000;
+  cursor: pointer;
+}
+.section-b .container .signInMethod .gitLogin label{
+  color: #FFF;
+  margin-right: 30px;
+}
+.section-b .container .signInMethod .gitLogin #gitIcon{
+  font-size: 40px;
+  align-self: center;
+  color: white;
+  margin: 10px 0 0 14px;
+}
+.section-b .container .signInMethod .gitLogin .placeGit{
+  width: 60px;
+  height: 60px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: rgb(0, 0, 0);
+}
+
+
+.section-b .container .signInMethod .googleLogin{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 300px;
+  height: 60px;
+  background-color: #F44336;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: 0.1s ease-in-out;
+  outline: none;
+}
+
+.section-b .container .signInMethod .googleLogin:hover{
+  box-shadow: 0 0 10px -1px #000000;
+  cursor: pointer;
+}
+.section-b .container .signInMethod .googleLogin label{
+  color: #FFF;
+  margin-right: 40px;
+  align-self: center;
+}
+.section-b .container .signInMethod .googleLogin #googleIcon{
+  font-size: 26px;
+  align-self: center;
+  color: white;
+  margin: 18px 0 0 20px;
+}
+.section-b .container .signInMethod .googleLogin .placeGoogle{
+  width: 60px;
+  height: 60px;
+  border-radius: 0px 5px 5px 0px;
+  background-color:#C53126;
+}
 @media screen and (max-width: 650px) {
   .section-b .container {
-    height: 400px;
+    height: 650px;
   }
 }
 /*# sourceMappingURL=LoginStyle.css.map */

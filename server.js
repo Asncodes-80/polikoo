@@ -1,8 +1,14 @@
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
+// Github Config
+const gitConf = require('./config/gitConf');
+
 const mySql = require('mysql');
 const config = require('./config/db')
 // Create connection to db MySQL
@@ -24,6 +30,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
 
+// This section must be first!
+app.use(session({
+    secret: 'I love Express!',
+    resave: false,
+    saveUninitialized: true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+// Setting passport with Github strategy
+passport.use(new GitHubStrategy(gitConf,
+    function(accessToken, refreshToken, profile, cb) {
+        return cb(null, profile);
+    }
+));
+// SerializeUser
+passport.serializeUser((user, cb)=>{
+    cb(null, user)
+});
+// DeserializeUser
+passport.deserializeUser((user, cb)=>{
+    cb(null, user)
+}); 
 // The Router
 // const adminRoute = require('./routes/adminRoute');
 const adminLogin = require('./routes/adminLogin');
@@ -31,6 +60,10 @@ const admin_login_process = require('./routes/admin_login_process');
 const generate_randy = require('./routes/generate_randy');
 const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
+const gitLogin = require('./routes/gitLogin');
+const gitAuth = require('./routes/gitAuth');
+const submitUserData = require('./routes/submitUserData');
+const submit_login_process = require('./routes/submit_login_process');
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
@@ -44,6 +77,10 @@ app.use('/admin_login_process', admin_login_process);
 app.use('/admin/generate_randy', generate_randy);
 app.use('/', index);
 app.use('/login', login);
+app.use('/gitLogin', gitLogin);
+app.use('/auth', gitAuth);
+app.use('/submitUserData', submitUserData);
+app.use('/submit_login_process', submit_login_process);
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);
@@ -74,10 +111,9 @@ app.use((req, res, next)=>{
 app.get('/account/:userId', (req, res, next)=>{
     const userId = req.params.userId;
     const username =  req.cookies.username;
-    const password = req.cookies.password;
     if(userId === username){
       try{
-        const cmd = `select * from accounts where username like "%${username}%" and password like "%${password}%"`;
+        const cmd = `select * from accounts where username like "%${username}%"`;
         conn.query(cmd, (err, results)=>{
             if(err)  res.redirect('login');
             // To authentication of user if his exists.

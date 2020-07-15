@@ -5,13 +5,18 @@ const app = express();
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
+// Github strategy 
 const GitHubStrategy = require('passport-github').Strategy;
 // Github Config
 const gitConf = require('./config/gitConf');
+// Google strategy 
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+// Google config
+const googleConf = require('./config/googleConfig')
 
 const mySql = require('mysql');
 const config = require('./config/db')
-// Create connection to db MySQL
+// Create connection to db MySQL 
 const conn = mySql.createConnection(config);
 // Check out connection is true or false
 conn.connect((err)=>{
@@ -45,6 +50,11 @@ passport.use(new GitHubStrategy(gitConf,
         return cb(null, profile);
     }
 ));
+passport.use(new GoogleStrategy(googleConf,
+    function(token, tokenSecret, profile, cb) {
+          return cb(null, profile);
+    }
+));
 // SerializeUser
 passport.serializeUser((user, cb)=>{
     cb(null, user)
@@ -64,6 +74,7 @@ const gitLogin = require('./routes/gitLogin');
 const gitAuth = require('./routes/gitAuth');
 const submitUserData = require('./routes/submitUserData');
 const submit_login_process = require('./routes/submit_login_process');
+const googleLogin = require('./routes/googleLogin');
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
@@ -81,6 +92,7 @@ app.use('/gitLogin', gitLogin);
 app.use('/auth', gitAuth);
 app.use('/submitUserData', submitUserData);
 app.use('/submit_login_process', submit_login_process);
+app.use('/googlelogin', googleLogin)
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);

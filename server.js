@@ -132,10 +132,8 @@ app.use((req, res, next)=>{
 
 app.get('/account/:userId', (req, res, next)=>{
     const userId = req.params.userId;
-    const username =  req.cookies.username;
-    if(userId === username){
       try{
-        const cmd = `select * from accounts where username like "%${username}%"`;
+        const cmd = `select * from accounts where u_id like "%${userId}%"`;
         conn.query(cmd, (err, results)=>{
             if(err)  res.redirect('login');
             // To authentication of user if his exists.
@@ -148,10 +146,6 @@ app.get('/account/:userId', (req, res, next)=>{
       }catch{
         res.redirect('login');
       }
-        
-    }else{
-        res.redirect('login');
-    }
 });
 
 

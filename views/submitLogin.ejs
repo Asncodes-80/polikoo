@@ -16,9 +16,17 @@
     <fieldset>
       <h2 class="fs-title">تایید حساب شما</h2>
       <h3 class="fs-subtitle">مرحله اول</h3>
-      <img class="profileAvatar" src="<%= avatar%>" alt="">
-      <input type="text" name="fullName" value="<%= fullName%>" readonly />
-      <input type="text" name="username" value="<%= username%>" readonly />
+      <img class="profileAvatar"
+           src="<%= avatar%>"
+           alt="Profile Avatar">
+      <input type="text" style="text-align: center" name="fullName" value="<%= fullName%>" readonly />
+      <input type="text"
+             style="text-align: center"
+             name="username"
+             placeholder="نام کاربری"
+             maxlength="30"
+              />
+      <input type="text" name="uId" style="display: none;" value="<%= u_id %>" readonly />
       <input type="button" name="next" class="next action-button" value="بعدی" />
     </fieldset>
     <fieldset>

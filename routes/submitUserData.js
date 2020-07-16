@@ -6,27 +6,31 @@ const mySql = require('mysql');
 const sqlConf = require('../config/db')
 const conn = mySql.createConnection(sqlConf);
 
-router.get('/', (req, res, next)=>{
+router.get('/', (req, res, next) => {
+    const u_id = req.user.id;
     const fullName = req.user.displayName;
     const username = req.user.username;
     const avatar = req.user.photos[0].value;
-    
-    const checkIn = `select * from accounts where username like "%${username}%"`;
-    conn.query(checkIn, (err, results)=>{
+    // Validation into db:
+    const checkIn = `select * from accounts where u_id like "%${u_id}%"`;
 
-        if(err) res.send('Database error!');
+    conn.query(checkIn, (err, results) => {
 
-        if(results != ""){ // If user exist now!
-            res.cookie("username", username);
+        if (err) res.send('Database error!');// DB Error!
+
+        if (results != "") { // If user exist now!
+            res.cookie("u_id", u_id);
             res.redirect("/userAccountPreparing");
-        }else{ // If you're new to Polikoo
-            res.render('submitLogin',{
+        } else { // If you're new to Polikoo
+            res.render('submitLogin', {
+                u_id: u_id,
                 fullName: fullName,
                 username: username,
                 avatar: avatar
-            }); 
+            });
         }
     });
+    // console.log(req.user);
 });
 
 module.exports = router;

@@ -12,7 +12,7 @@ const gitConf = require('./config/gitConf');
 // Google strategy 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // Google config
-const googleConf = require('./config/googleConfig')
+const googleConf = require('./config/googleConfig');
 
 const mySql = require('mysql');
 const config = require('./config/db')
@@ -50,6 +50,7 @@ passport.use(new GitHubStrategy(gitConf,
         return cb(null, profile);
     }
 ));
+// Setting passport with Google strategy
 passport.use(new GoogleStrategy(googleConf,
     function(token, tokenSecret, profile, cb) {
           return cb(null, profile);
@@ -70,11 +71,16 @@ const admin_login_process = require('./routes/admin_login_process');
 const generate_randy = require('./routes/generate_randy');
 const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
+// ===================GitHub Auth========================
 const gitLogin = require('./routes/gitLogin');
 const gitAuth = require('./routes/gitAuth');
 const submitUserData = require('./routes/submitUserData');
 const submit_login_process = require('./routes/submit_login_process');
+// ==================Google Auth=========================
 const googleLogin = require('./routes/googleLogin');
+const googleAuth = require('./routes/googleAuth');
+const submitGoogleUserData = require('./routes/submitGoogleUserData')
+// ==================Polikoo Auth=========================
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
@@ -88,11 +94,16 @@ app.use('/admin_login_process', admin_login_process);
 app.use('/admin/generate_randy', generate_randy);
 app.use('/', index);
 app.use('/login', login);
+// ================GitHub Authenticate Page=====================
 app.use('/gitLogin', gitLogin);
 app.use('/auth', gitAuth);
 app.use('/submitUserData', submitUserData);
 app.use('/submit_login_process', submit_login_process);
-app.use('/googlelogin', googleLogin)
+//================Google Authenticate Page=====================
+app.use('/googlelogin', googleLogin);
+app.use('/gAuth', googleAuth);
+app.use('/submitGoogleUserData', submitGoogleUserData);
+// ==================Polikoo Auth=========================
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);

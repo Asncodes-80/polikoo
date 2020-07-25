@@ -8,62 +8,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <section class="section-a">
-        <div class="container">
-            <div class="circular">
-                <img src="/assets/img/PolikooLogin.png" class="polikoo" alt="PolikooLogo">
-                <h4>پولی کو</h4>
-                <h5>ورود به حساب</h5>
-            </div>
+<section class="section-a">
+    <div class="container">
+        <div class="circular">
+            <img src="/assets/img/PolikooLogin.png" class="polikoo" alt="PolikooLogo">
+            <h4>پولی کو</h4>
+            <h5>ورود به حساب</h5>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section-b">
-        <div class="container">
-            <form action="login_process" method="POST" enctype="application/x-www-form-urlencoded" class="nestedForm">
-                <h4 style="text-align: center"><%- msg%></h4>
-                <div class="username">
-                    <input placeholder="نام کاربری" type="text" class="usr" name="username" id="usr">
-                    <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
-                </div>
-                <div class="password">
-                    <input placeholder="گذرواژه" type="password" class="pass" name="password" id="pass">
-                    <img src="/assets/img/password.png" class="usrIcon" alt="passwordIcon">
-                </div>
-
-                <div class="form">
-                    <button class="loginSecond">ورود</button>
-                    <a href="signup" class="signupLink" >!حسابی تو پولی کو نداری؟ پس به ما ملحق شو</a>
-                </div>
-            </form>
-            <div class="otherSignMethod">
-                <div class="line-1"></div>
-                <div class="line-or">یا</div>
-                <div class="line-2"></div>
+<section class="section-b">
+    <div class="container">
+        <form action="login_process" method="POST" enctype="application/x-www-form-urlencoded" class="nestedForm">
+            <h4 style="text-align: center"><%- msg %></h4>
+            <div class="username">
+                <input placeholder="نام کاربری" type="text" class="usr" name="username" id="usr">
+                <img src="/assets/img/user.png" class="usrIcon" alt="usernameIcon">
+            </div>
+            <div class="password">
+                <input placeholder="گذرواژه" type="password" class="pass" name="password" id="pass">
+                <img src="/assets/img/password.png" class="usrIcon" alt="passwordIcon">
             </div>
 
-            <div class="signInMethod">
-                <!-- GitHub login -->
-                <a href="/gitLogin">
-                    <div class="gitLogin">
-                        <div class="placeGit">
-                            <i class="fa fa-github" id="gitIcon"></i>
-                        </div>
-                        <label>!با حساب گیت هابت وارد شو</label>
-                    </div>
-                </a>
-                <!-- Google login -->
-                <a href="/googlelogin">
-                    <div class="googleLogin">
-                        <div class="placeGoogle">
-                            <i class="fa fa-google" id="googleIcon"></i>
-                        </div>
-                            <label>!با حساب گوگلت وارد شو</label>
-                        </div>
-                    </div>
-                </a>
+            <div class="form">
+                <button class="loginSecond">ورود</button>
+                <a href="signup" class="signupLink">!حسابی تو پولی کو نداری؟ پس به ما ملحق شو</a>
             </div>
+        </form>
+        <div class="otherSignMethod">
+            <div class="line-1"></div>
+            <div class="line-or">یا</div>
+            <div class="line-2"></div>
         </div>
-    </section>    
+
+        <div class="signInMethod">
+            <!-- GitHub login -->
+            <a href="/gitLogin">
+                <div class="gitLogin">
+                    <div class="placeGit">
+                        <i class="fa fa-github" id="gitIcon"></i>
+                    </div>
+                    <label>!با حساب گیت هابت وارد شو</label>
+                </div>
+            </a>
+            <!-- Google login -->
+            <a href="/googlelogin">
+                <div class="googleLogin">
+                    <div class="placeGoogle">
+                        <i class="fa fa-google" id="googleIcon"></i>
+                    </div>
+                    <label>!با حساب گوگلت وارد شو</label>
+                </div>
+        </div>
+        </a>
+    </div>
+    </div>
+</section>
 </body>
 </html>

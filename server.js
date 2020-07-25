@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -15,24 +16,25 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const googleConf = require('./config/googleConfig');
 
 const mySql = require('mysql');
+// Creating connection with mysql soft db.
 const config = require('./config/db')
 // Create connection to db MySQL 
 const conn = mySql.createConnection(config);
 // Check out connection is true or false
-conn.connect((err)=>{
-    if(err) return console.log('Connection failed');
+conn.connect((err) => {
+    if (err) return console.log('Connection failed');
     return console.log('Connected');
 })
 
 app.use(helmet());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
-// app.use(express.static('public'))
+app.use(express.static('public'))
 app.use('/css', express.static(path.join(__dirname + '/public/css')));
 app.use('/assets/img', express.static(path.join(__dirname + '/public/assets/img')))
 app.use('/assets/font', express.static(path.join(__dirname + '/public/assets/font')))
 app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // This section must be first!
@@ -46,24 +48,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Setting passport with Github strategy
 passport.use(new GitHubStrategy(gitConf,
-    function(accessToken, refreshToken, profile, cb) {
+    function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
     }
 ));
 // Setting passport with Google strategy
 passport.use(new GoogleStrategy(googleConf,
-    function(token, tokenSecret, profile, cb) {
-          return cb(null, profile);
+    function (token, tokenSecret, profile, cb) {
+        return cb(null, profile);
     }
 ));
 // SerializeUser
-passport.serializeUser((user, cb)=>{
+passport.serializeUser((user, cb) => {
     cb(null, user)
 });
 // DeserializeUser
-passport.deserializeUser((user, cb)=>{
+passport.deserializeUser((user, cb) => {
     cb(null, user)
-}); 
+});
 // The Router
 // const adminRoute = require('./routes/adminRoute');
 const adminLogin = require('./routes/adminLogin');
@@ -71,16 +73,16 @@ const admin_login_process = require('./routes/admin_login_process');
 const generate_randy = require('./routes/generate_randy');
 const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
-// ===================GitHub Auth========================
+// ===================GitHub Auth sys========================
 const gitLogin = require('./routes/gitLogin');
 const gitAuth = require('./routes/gitAuth');
 const submitUserData = require('./routes/submitUserData');
 const submit_login_process = require('./routes/submit_login_process');
-// ==================Google Auth=========================
+// ==================Google Auth sys=========================
 const googleLogin = require('./routes/googleLogin');
 const googleAuth = require('./routes/googleAuth');
 const submitGoogleUserData = require('./routes/submitGoogleUserData')
-// ==================Polikoo Auth=========================
+// ==================Polikoo Auth sys=========================
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
@@ -107,22 +109,26 @@ app.use('/submitGoogleUserData', submitGoogleUserData);
 app.use('/signup', signup);
 app.use('/register_process', register_process);
 app.use('/login_process', login_process);
+// =====================================================
 app.use('/userAccountPreparing', loaderScreen);
 app.use('/submit_process', submit_process);
 app.use('/logout', logout);
 
 
-// ================404 Page Not found===============
-// app.all('*', (req, res, next)=>{
-//     res.render('404');
-// });
+// Create middleware for NotFound page 404
+app.use((req, res, next)=>{
+    if(!req.user)
+        return res.render('404')
+        // return next(createError(404, res.render('test')));
+    next();
+})
 
 // Create a middleware to get admin random number
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     let cmd = 'select * from admin';
-    conn.query(cmd, (err, results)=>{
-        if(err) return res.send(err);
-        if(results != "")
+    conn.query(cmd, (err, results) => {
+        if (err) return res.send(err);
+        if (results != "")
             res.locals.adResults = results;
         else
             res.locals.adResults = ``;
@@ -130,49 +136,52 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.get('/account/:userId', (req, res, next)=>{
-    const userId = req.params.userId;
-      try{
-        const cmd = `select * from accounts where u_id like "%${userId}%"`;
-        conn.query(cmd, (err, results)=>{
-            if(err)  res.redirect('login');
-            // To authentication of user if his exists.
-            if(results != ""){
-                res.render('account', {results: results});
-            }            
-            else
-                res.redirect('/login?msg=dbFailure');
-        })
-      }catch{
-        res.redirect('login');
-      }
+
+app.use((req, res, next) => {
+        if (req.query.msg == "charged")
+            res.locals.msg = 'حساب شما شارژ شد';
+    next();
 });
 
-
-app.get('/admin/:adminId', (req, res, next)=>{
-    const adminId = req.params.adminId;
-    const cookeAdmin =  req.cookies.adminId;
-
-    if(adminId === cookeAdmin){
-        const cmd = `select * from winner`;
-        conn.query(cmd, (err, results)=>{
-            if(err) {
-                res.redirect('adminlogin?msg=failure');
-                console.log(err);
-            } 
+app.get('/account/:userId', (req, res, next) => {
+    const userId = req.params.userId;
+    try {
+        const cmd = `select * from accounts where u_id like "%${userId}%"`;
+        conn.query(cmd, (err, results) => {
+            if (err) res.redirect('login');
             // To authentication of user if his exists.
-            if(results != ""){
-                res.render('admin', {results: results});
-            }            
-            else
-                res.redirect('/adminlogin?msg=failure');
+            if (results != "") {
+                res.render('account', {results: results});
+            } else
+                res.redirect('/login?msg=dbFailure');
         })
-    }else{
-        res.redirect('adminlogin?msg=dbFailure');
+    } catch {
+        res.redirect('login');
     }
 });
 
 
+app.get('/admin/:adminId', (req, res, next) => {
+    const adminId = req.params.adminId;
+    const cookeAdmin = req.cookies.adminId;
+
+    if (adminId === cookeAdmin) {
+        const cmd = `select * from winner`;
+        conn.query(cmd, (err, results) => {
+            if (err) {
+                res.redirect('adminlogin?msg=failure');
+                console.log(err);
+            }
+            // To authentication of user if his exists.
+            if (results != "") {
+                res.render('admin', {results: results});
+            } else
+                res.redirect('/adminlogin?msg=failure');
+        })
+    } else {
+        res.redirect('adminlogin?msg=dbFailure');
+    }
+});
 
 
 app.listen(4000);

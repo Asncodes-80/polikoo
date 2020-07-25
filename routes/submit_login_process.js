@@ -12,7 +12,7 @@ router.post('/', (req, res, next) => {
     const username = req.body.username;
     const ntCode = req.body.ntCode;
     const ipAddress = req.body.ipaddress;
-
+    const avatar = req.body.avatar;
     // Statement if user is exists!
     if (fullName != "" && username != "" && ntCode != "" && ipAddress != "") {
 
@@ -40,7 +40,8 @@ router.post('/', (req, res, next) => {
                             username: username,
                             password: '',
                             naturalcode: ntCode,
-                            ipaddress: ipAddress
+                            ipaddress: ipAddress,
+                            avatar: avatar
                         };
                         const cmd = 'INSERT INTO accounts SET ?';
                         conn.query(cmd, data, (err, outing) => {

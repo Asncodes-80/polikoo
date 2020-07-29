@@ -7,7 +7,7 @@ width="400"
 </p>
 
 # Welcome to the polikoo!
-Polikoo is a brand new for try your chance with total of IP address!
+Polikoo is a brand new for try your chance with total of your IP address!
 
 Base on Node.js
 

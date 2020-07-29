@@ -9,6 +9,15 @@ width="400"
 # Welcome to the polikoo!
 Polikoo is a brand new for try your chance with total of IP address!
 
+Base on Node.js
+
+[![npm Version][npm-image]][npm-url]
+[![CI][actions-image]][actions-url]
+[![Dependency Status][david-image]][david-url]
+[![Known Vulnerabilities][snyk-image]][snyk-url]
+[![codecov][codecov-image]][codecov-url]
+[![Code Style: Google][gts-image]][gts-url]
+
 ***
 
 # Prerequisites:
@@ -70,3 +79,18 @@ This is a concept and final project for my Web design course and my idea is uniq
 
 
 ***
+
+
+
+[actions-image]: https://github.com/google/js-green-licenses/workflows/ci/badge.svg
+[actions-url]: https://github.com/google/js-green-licenses/actions
+[codecov-image]: https://codecov.io/gh/google/js-green-licenses/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/google/js-green-licenses
+[david-image]: https://david-dm.org/google/js-green-licenses.svg
+[david-url]: https://david-dm.org/google/js-green-licenses
+[gts-image]: https://img.shields.io/badge/code%20style-google-blueviolet.svg
+[gts-url]: https://github.com/google/gts
+[npm-image]: https://img.shields.io/npm/v/js-green-licenses.svg
+[npm-url]: https://npmjs.org/package/js-green-licenses
+[snyk-image]: https://snyk.io/test/github/google/js-green-licenses/badge.svg
+[snyk-url]: https://snyk.io/test/github/google/js-green-licenses

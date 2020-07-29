@@ -1,5 +1,15 @@
-Welcome to the polikoo!
+<p align="center">
+<img
+alt="Node.js"
+src="https://nodejs.org/static/images/logo-light.svg"
+width="400"
+/>
+</p>
+
+# Welcome to the polikoo!
 Polikoo is a brand new for try your chance with total of IP address!
+
+***
 
 # Prerequisites:
 
@@ -56,7 +66,7 @@ Instagram: alireza.codes
 
 Copyright © 2020 Alireza Soltani Neshan.
 
-This is a concept and final project for my Web design course and my idea is unique and i'm going to full complete that in field of website.
+This is a concept and final project for my Web design course and my idea is unique and i'm going to full complete that in field of website
 
 
-
+***

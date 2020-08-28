@@ -75,17 +75,13 @@ const index = require('./routes/indexRouter');
 const login = require('./routes/loginRouter');
 // ===================GitHub Auth sys========================
 const gitLogin = require('./routes/gitLogin');
-const gitAuth = require('./routes/gitAuth');
-const submitUserData = require('./routes/submitUserData');
-const submit_login_process = require('./routes/submit_login_process');
 // ==================Google Auth sys=========================
 const googleLogin = require('./routes/googleLogin');
-const googleAuth = require('./routes/googleAuth');
-const submitGoogleUserData = require('./routes/submitGoogleUserData')
 // ==================Polikoo Auth sys=========================
 const signup = require('./routes/signupRouter');
 const register_process = require('./routes/register_process');
 const login_process = require('./routes/login_process');
+const submit_login_process = require('./routes/submit_login_process');
 const loaderScreen = require('./routes/loaderRoute');
 const submit_process = require('./routes/submit_process');
 const logout = require('./routes/logout');
@@ -97,14 +93,10 @@ app.use('/admin/generate_randy', generate_randy);
 app.use('/', index);
 app.use('/login', login);
 // ================GitHub Authenticate Page=====================
-app.use('/gitLogin', gitLogin);
-app.use('/auth', gitAuth);
-app.use('/submitUserData', submitUserData);
+app.use(gitLogin);
 app.use('/submit_login_process', submit_login_process);
 //================Google Authenticate Page=====================
-app.use('/googlelogin', googleLogin);
-app.use('/gAuth', googleAuth);
-app.use('/submitGoogleUserData', submitGoogleUserData);
+app.use(googleLogin);
 // ==================Polikoo Auth=========================
 app.use('/signup', signup);
 app.use('/register_process', register_process);
@@ -113,15 +105,6 @@ app.use('/login_process', login_process);
 app.use('/userAccountPreparing', loaderScreen);
 app.use('/submit_process', submit_process);
 app.use('/logout', logout);
-
-
-// Create middleware for NotFound page 404
-app.use((req, res, next)=>{
-    if(!req.user)
-        return res.render('404')
-        // return next(createError(404, res.render('test')));
-    next();
-})
 
 // Create a middleware to get admin random number
 app.use((req, res, next) => {
@@ -136,13 +119,10 @@ app.use((req, res, next) => {
     next();
 });
 
-
-app.use((req, res, next) => {
-        if (req.query.msg == "charged")
-            res.locals.msg = 'حساب شما شارژ شد';
-    next();
-});
-
+// Create middleware for NotFound page 404
+// app.use((req, res)=>{
+//      res.status('404').render('404')
+// })
 app.get('/account/:userId', (req, res, next) => {
     const userId = req.params.userId;
     try {
